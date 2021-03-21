@@ -46,7 +46,7 @@ args = parser.parse_args()
 if 'policy_scope' in args and args.policy_scope: 
     policy_scope = args.policy_scope
 else:
-    policy_scope = 'AntMultiEnv_Centralized'
+    policy_scope = 'AntMultiEnv_Decentralized'
  
 if policy_scope=="AntMultiEnv_Decentralized":
     from simulation_envs.ant_decentralized_controller import AntDecentralizedEnv as AntEnv
@@ -81,7 +81,7 @@ config['clip_param'] = 0.2
 config['lr'] = 3e-4
 
 config['model']['custom_model'] = "fc_glorot_uniform_init"
-config['model']['fcnet_hiddens'] = grid_search([[16,16], [32,32], [64, 64], [128,128], [256,256], [512,512]])
+config['model']['fcnet_hiddens'] = grid_search([[8,8], [16,16], [32,32], [64, 64], [128,128], [256,256]])
 
 config['grad_clip']=0.5
 config['observation_filter'] = 'MeanStdFilter'
